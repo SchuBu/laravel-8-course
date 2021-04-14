@@ -22,4 +22,9 @@ class Post extends Model
     {
         return Carbon::parse($value)->format('d.m.Y H:i');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('created_at','<=', now());
+    }
 }

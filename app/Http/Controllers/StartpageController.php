@@ -9,7 +9,11 @@ class StartpageController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('user')->latest()->limit(5)->get();
+        $posts = Post::with('user')
+            ->latest()
+            ->active()
+            ->limit(5)
+            ->get();
         return view('index', compact('posts'));
     }
 }
