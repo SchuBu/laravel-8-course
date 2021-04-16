@@ -7,7 +7,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.4/tailwind.min.css" integrity="sha512-paVHVRRhdoOu1nOXKnqDC1Vka0nh7FAmU3nsM4n2FKxOQTeF6crMdMfkVvEsuaOXZ6oEAVL5+wLbQcule/Xdag==" crossorigin="anonymous" />    <style>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <style>
         body {
             font-family: 'Nunito', sans-serif;
         }
@@ -37,5 +38,6 @@
     </div>
 </main>
 <x-layouts.footer />
+<script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 </body>
 </html>
