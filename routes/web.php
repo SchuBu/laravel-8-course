@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [StartpageController::class,'index']);
 
+Route::get('/blog/{id}',function($id) {
+    $post = \App\Models\Post::first();
+    return view('blog.show', compact('post'));
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
