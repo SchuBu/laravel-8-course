@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [StartpageController::class,'index']);
+Route::get('/', [StartpageController::class, 'index']);
 
-Route::get('/blog/{id}',function($id) {
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::name('admin.')->group(function () {
+            Route::view('/', 'backend.index')->name('index');
+        });
+    });
+});
+
+Route::get('/blog/{id}', function ($id) {
     $post = \App\Models\Post::first();
     return view('blog.show', compact('post'));
 });
