@@ -23,7 +23,7 @@
 @endif
 <main class="flex flex-1 container max-w-7xl mx-auto px-5 lg:px-40 space-x-5 mb-5">
     {{ $slot }}
-    @if(!Route::is(['admin*','login','logout']))
+    @if(!Route::is(['admin*','login','logout','password.*']))
         <div class="space-y-5" style="width:300px;">
 
             <div class="bg-blue-700 shadow rounded-sm">

@@ -1,0 +1,19 @@
+.form-group {
+    @apply my-5;
+}
+
+.form-label {
+    @apply text-sm font-bold text-gray-500 py-1 inline-block;
+}
+
+.form-input {
+    @apply w-full bg-transparent focus:outline-none focus:bg-yellow-100 text-gray-700 border-l border-b border-gray-300 p-2;
+}
+
+.is-invalid {
+@apply border-red-700;
+}
+
+.invalid-feedback {
+    @apply text-xs text-red-700 mt-2;
+}

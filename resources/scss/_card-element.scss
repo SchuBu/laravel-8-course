@@ -1,0 +1,12 @@
+.card {
+    @apply bg-gray-50 shadow-lg;
+
+    .card-header {
+        @apply py-1 px-3 bg-blue-700 text-white;
+    }
+
+
+    .card-body {
+        @apply border border-gray-300 p-5;
+    }
+}
