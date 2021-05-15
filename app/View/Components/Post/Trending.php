@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Post;
 
+use App\Models\Post;
 use Illuminate\View\Component;
 
 class Trending extends Component
@@ -23,13 +24,9 @@ class Trending extends Component
      */
     public function render()
     {
-        $posts = collect([
-            ["title" => "Interessanter Beitrag 1", "id" => 1],
-            ["title" => "Interessanter Beitrag 2", "id" => 2],
-            ["title" => "Interessanter Beitrag 3", "id" => 3],
-            ["title" => "Interessanter Beitrag 4", "id" => 4],
-            ["title" => "Interessanter Beitrag 5", "id" => 5],
-        ]);
+        $posts = Post::active()
+            ->limit(5)
+            ->get();
 
         return view('components.post.trending', compact('posts'));
     }
