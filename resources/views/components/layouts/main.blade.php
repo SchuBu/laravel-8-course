@@ -23,9 +23,9 @@
 @endif
 <main class="flex flex-1 container max-w-7xl mx-auto px-5 lg:px-40 space-x-5 mb-5">
     {{ $slot }}
-    <div class="space-y-5" style="width:300px;">
+    @if(!Route::is(['admin*','login','logout']))
+        <div class="space-y-5" style="width:300px;">
 
-        @if(!Route::is(['admin*','login','logout']))
             <div class="bg-blue-700 shadow rounded-sm">
                 <h2 class="text-white text-2xl p-5">Newsletter</h2>
                 <div class="border-t border-blue-600 text-white p-5 text-sm">
@@ -43,8 +43,8 @@
             <x-post.newest/>
             <x-post.categories/>
             <x-post.trending/>
-        @endif
-    </div>
+        </div>
+    @endif
 </main>
 <x-layouts.footer/>
 <script src="{{asset('js/app.js')}}" type="text/javascript"></script>

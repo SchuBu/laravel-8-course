@@ -8,7 +8,12 @@
             <li><a href="#">Option 3</a></li>
         </ul>
         <ul>
-            <li><a href="#">Login</a></li>
+            <li>
+                <form action="{{route('logout')}}" method="post">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
         </ul>
     </nav>
 </header>
