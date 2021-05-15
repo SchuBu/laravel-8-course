@@ -25,7 +25,7 @@
     {{ $slot }}
     <div class="space-y-5" style="width:300px;">
 
-        @if(!Route::is('admin*'))
+        @if(!Route::is(['admin*','login','logout']))
             <div class="bg-blue-700 shadow rounded-sm">
                 <h2 class="text-white text-2xl p-5">Newsletter</h2>
                 <div class="border-t border-blue-600 text-white p-5 text-sm">
