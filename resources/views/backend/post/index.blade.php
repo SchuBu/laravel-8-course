@@ -1,12 +1,19 @@
 <x-layouts.main>
     <div class="flex-1">
-        <table class="backend_table bg-white shadow-md text-gray-800 text-sm">
+
+        <div class="mb-5 flex justify-end">
+            <a href="{{route('admin.post.create')}}" class="btn btn-primary">
+                <i class="fa fa-plus fa-fw"></i> Beitrag erstellen
+            </a>
+        </div>
+
+        <table class="backend_table bg-white shadow-md text-gray-800 text-sm w-full">
             <thead>
             <tr class="bg-blue-800 text-white font-bold">
                 <th class="border border-gray-200 p-2">ID</th>
                 <th class="border border-gray-200 p-2">Datum</th>
                 <th class="border border-gray-200 p-2"></th>
-                <th class="border border-gray-200 p-2">Titel</th>
+                <th class="border border-gray-200 p-2 w-full">Titel</th>
                 <th class="border border-gray-200 p-2">Optionen</th>
             </tr>
             </thead>
@@ -14,7 +21,7 @@
             @foreach($posts as $post)
                 <tr @if($loop->even) class="bg-gray-100" @endif>
                     <td class="border border-gray-200 p-2">{{ $post->id }}</td>
-                    <td class="border border-gray-200 p-2">{{ $post->created_at }}</td>
+                    <td class="border border-gray-200 p-2 whitespace-nowrap">{{ $post->created_at }}</td>
                     <td class="border border-gray-200 p-2">
                         @if($post->isTrashed())
                             <i class="far fa-dot-circle text-red-700"></i>

@@ -8,7 +8,13 @@
             <li><a href="#">Impressum</a></li>
         </ul>
         <ul>
-            <li><a href="{{route('admin.index')}}">Login</a></li>
+            <li>
+                @guest
+                    <a href="{{route('admin.index')}}">Login</a>
+                @else
+                    <a href="{{route('admin.index')}}">{{ Auth::user()->name }}</a>
+                @endguest
+            </li>
         </ul>
     </nav>
 </header>

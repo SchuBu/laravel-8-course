@@ -15,6 +15,8 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes, HasSlug;
 
+    protected $guarded = ['id', 'user_id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
