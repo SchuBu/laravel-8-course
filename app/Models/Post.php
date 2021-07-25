@@ -49,11 +49,6 @@ class Post extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function getKeyName(): string
-    {
-        return 'slug';
-    }
-
     public function path()
     {
         return route('post.show',$this->slug);

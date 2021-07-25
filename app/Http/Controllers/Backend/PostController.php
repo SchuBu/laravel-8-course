@@ -64,9 +64,8 @@ class PostController extends Controller
      * @param \App\Models\Post $post
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::withTrashed()->findOrFail($id);
         return view('backend.post.edit', compact('post'));
     }
 
@@ -75,11 +74,17 @@ class PostController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Post $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+        $post->update($data);
+        // @todo: Flash Messages
+        return redirect(route('admin.post.index'));
     }
 
     /**
@@ -88,9 +93,8 @@ class PostController extends Controller
      * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::withTrashed()->findOrFail($id);
         // $post->destroy() ...
     }
 }

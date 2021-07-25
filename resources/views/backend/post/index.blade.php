@@ -32,6 +32,7 @@
                     <td class="border border-gray-200 p-2">{{ $post->title }}</td>
                     <td class="border border-gray-200 p-2">
                         <div class="flex">
+
                             <a href="{{ route('admin.post.edit', $post->slug) }}" class="btn btn-primary"><i
                                     class="fa fa-pencil-alt fa-fw"></i></a>
                             <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">

@@ -22,7 +22,9 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::name('admin.')->group(function () {
             Route::view('/', 'backend.index')->name('index');
-            Route::resource('/post', BackendPostController::class);
+            Route::resource('/post', BackendPostController::class)->parameters([
+                'post' => 'post:slug'
+            ]);
         });
     });
 });
