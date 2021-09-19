@@ -91,10 +91,13 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Models\Post $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function destroy(Post $post)
     {
-        // $post->destroy() ...
+        $post->isTrashed() ? $post->restore() : $post->delete();
+
+        // @todo: FLash Messages
+        return redirect(route('admin.post.index'));
     }
 }
