@@ -670,12 +670,6 @@ video {
 .-ml-px {
 	margin-left: -1px;
 }
-.mb-20 {
-	margin-bottom: 5rem;
-}
-.mb-10 {
-	margin-bottom: 2.5rem;
-}
 .flex {
 	display: flex;
 }
@@ -742,20 +736,14 @@ video {
 .items-center {
 	align-items: center;
 }
-.items-end {
-	align-items: flex-end;
-}
 .justify-center {
 	justify-content: center;
-}
-.justify-between {
-	justify-content: space-between;
 }
 .justify-end {
 	justify-content: flex-end;
 }
-.justify-items-end {
-	justify-items: end;
+.justify-between {
+	justify-content: space-between;
 }
 .space-y-5 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-y-reverse: 0;
