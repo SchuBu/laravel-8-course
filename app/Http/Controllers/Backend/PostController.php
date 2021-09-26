@@ -83,7 +83,7 @@ class PostController extends Controller
             'body' => 'required'
         ]);
         $post->update($data);
-        // @todo: Flash Messages
+        self::success('Der Beitrag wurde erfolgreich gespeichert!');
         return redirect(route('admin.post.index'));
     }
 
@@ -96,8 +96,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->isTrashed() ? $post->restore() : $post->delete();
+        $post->isTrashed() ? self::warning('Beitrag wurde als gelöscht markiert!') : self::success('Beitrag wurde als sichtbar markiert!');
 
-        // @todo: FLash Messages
         return redirect(route('admin.post.index'));
     }
 }
