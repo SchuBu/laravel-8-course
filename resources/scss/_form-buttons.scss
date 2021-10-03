@@ -6,10 +6,18 @@
     }
 
     &.btn-secondary {
-
+        @apply bg-gray-100 text-gray-900 hover:bg-gray-300 border border-gray-200 transition-colors duration-200;
     }
 
     &.btn-danger {
+
+    }
+
+    &.btn-warning {
+
+    }
+
+    &.btn-info {
 
     }
 }

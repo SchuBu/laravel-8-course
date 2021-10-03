@@ -19,7 +19,7 @@
             </thead>
             <tbody>
             @foreach($posts as $post)
-                <tr @if($loop->even) class="bg-gray-100" @endif>
+                <tr @if($loop->even) class="bg-gray-50" @endif>
                     <td class="border border-gray-200 p-2">{{ $post->id }}</td>
                     <td class="border border-gray-200 p-2 whitespace-nowrap">{{ $post->created_at }}</td>
                     <td class="border border-gray-200 p-2">
@@ -33,13 +33,17 @@
                     <td class="border border-gray-200 p-2">
                         <div class="flex">
 
-                            <a href="{{ route('admin.post.edit', $post->slug) }}" class="btn btn-primary"><i
+                            <a href="{{ route('admin.post.edit', $post->slug) }}" class="btn btn-secondary"><i
                                     class="fa fa-pencil-alt fa-fw"></i></a>
                             <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-trash-alt fa-fw"></i>
+                                <button type="submit" class="btn btn-secondary">
+                                    @if($post->isTrashed())
+                                        <i class="fa fa-toggle-off text-red-700 fa-fw"></i>
+                                    @else
+                                        <i class="fa fa-toggle-on text-green-700 fa-fw"></i>
+                                    @endif
                                 </button>
                             </form>
                         </div>
