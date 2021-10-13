@@ -17,8 +17,16 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
+    @livewireStyles
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
+<div class="w-full mt-3 ml-3 fixed">
+    <div class="">
+       <a href="https://www.buymeacoffee.com/schubu">
+            <img
+                src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=schubu&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"></a>
+    </div>
+</div>
 @if(!Route::is('admin*'))
     <x-layouts.header/>
 @else
@@ -29,7 +37,6 @@
     {{ $slot }}
     @if(!Route::is(['admin*','login','logout','password.*']))
         <div class="space-y-5" style="width:300px;">
-
             <div class="bg-blue-700 shadow rounded-sm">
                 <h2 class="text-white text-2xl p-5">Newsletter</h2>
                 <div class="border-t border-blue-600 text-white p-5 text-sm">
@@ -52,5 +59,6 @@
 </main>
 <x-layouts.footer/>
 <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
+@livewireScripts
 </body>
 </html>
