@@ -20,7 +20,7 @@
     @livewireStyles
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
-<div class="w-full mt-3 ml-3 fixed">
+<div class="w-64 mt-3 ml-3 fixed">
     <div class="">
        <a href="https://www.buymeacoffee.com/schubu">
             <img
