@@ -29,6 +29,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+Route::view('/modal','modal');
+
 Route::resource('/post',PostController::class);
 
 Route::get('/welcome', function () {
