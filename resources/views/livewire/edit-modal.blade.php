@@ -1,4 +1,4 @@
-    <x-modal title="Dies ist die Überschrift" wire:model.defer="showModal">
+    <x-modal title="Beitrag bearbeiten" wire:model.defer="showModal">
         <x-slot name="button">
             <a @click="show = true" class="btn btn-secondary"><i
                     class="fa fa-pencil-alt fa-fw"></i></a>

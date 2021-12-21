@@ -32,11 +32,6 @@ class Table extends Component
         $this->updated = now();
     }
 
-    public function editModal($pid)
-    {
-        $this->emit('edit-modal', $pid);
-    }
-
     public function render()
     {
         $posts = Post::withTrashed()

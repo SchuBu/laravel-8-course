@@ -11,8 +11,6 @@ class EditModal extends Component
     public $showModal = false;
     public $post;
 
-    protected $listeners = ["edit-modal" => "editModal"];
-
     protected $rules = [
         'post.title' => 'required',
         'post.body' => 'required'
@@ -21,12 +19,6 @@ class EditModal extends Component
     public function render()
     {
         return view('livewire.edit-modal');
-    }
-
-    public function editModal($pid)
-    {
-        $this->post = Post::withTrashed()->whereId($pid)->firstOrFail()->toArray();
-        $this->showModal = true;
     }
 
     public function save()
