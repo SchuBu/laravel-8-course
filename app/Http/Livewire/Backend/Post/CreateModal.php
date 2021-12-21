@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Backend\Post;
 
-use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Livewire\WithPagination;
 
-class EditModal extends Component
+class CreateModal extends Component
 {
     public $showModal = false;
     public $post;
@@ -16,18 +15,16 @@ class EditModal extends Component
         'post.body' => 'required'
     ];
 
-    public function render()
-    {
-        return view('livewire.edit-modal');
-    }
-
     public function save()
     {
-
         $this->validate();
-        Post::withTrashed()->whereId($this->post['id'])->firstOrFail()->update($this->post);
+        Auth::user()->posts()->create($this->post);
         $this->showModal = false;
         $this->emit('post-updated');
     }
 
+    public function render()
+    {
+        return view('livewire.backend.post.create-modal');
+    }
 }

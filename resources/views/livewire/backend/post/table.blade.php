@@ -1,8 +1,6 @@
 <div class="flex-1">
     <div class="mb-5 flex justify-end">
-        <a href="{{route('admin.post.create')}}" class="btn btn-primary">
-            <i class="fa fa-plus fa-fw"></i> Beitrag erstellen
-        </a>
+        <livewire:backend.post.create-modal />
     </div>
 
 
@@ -41,7 +39,7 @@
                     <x-td>{{ $post->title }}</x-td>
                     <x-td>
                         <div class="flex">
-                            @livewire('edit-modal', ["post" => $post->toArray()], key($post->id))
+                            @livewire('backend.post.edit-modal', ["post" => $post->toArray()], key($post->id))
                             <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
                                 @method('delete')
                                 @csrf
@@ -53,6 +51,9 @@
                                     @endif
                                 </button>
                             </form>
+                            <button type="submit" class="btn btn-secondary">
+                                <i class="fa fa-trash fa-fw"></i>
+                            </button>
                         </div>
                     </x-td>
                 </x-tr>
