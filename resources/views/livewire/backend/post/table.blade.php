@@ -13,48 +13,52 @@
     --}}
     <x-table>
         <x-thead>
-        <x-tr class="bg-blue-800 text-white font-bold">
-            <x-th sortable wire:click="sortBy('id')" :direction="$sortField === 'id' ? $sortDirection : null">ID</x-th>
-            <x-th sortable wire:click="sortBy('created_at')" :direction="$sortField === 'created_at' ? $sortDirection : null">Datum</x-th>
-            <x-th></x-th>
-            <x-th sortable wire:click="sortBy('title')" :direction="$sortField === 'title' ? $sortDirection : null" class="w-full">Titel</x-th>
-            <x-th>Optionen</x-th>
-        </x-tr>
+            <x-tr class="bg-blue-800 text-white font-bold">
+                <x-th sortable wire:click="sortBy('id')" :direction="$sortField === 'id' ? $sortDirection : null">ID
+                </x-th>
+                <x-th sortable wire:click="sortBy('created_at')"
+                      :direction="$sortField === 'created_at' ? $sortDirection : null">Datum
+                </x-th>
+                <x-th></x-th>
+                <x-th sortable wire:click="sortBy('title')" :direction="$sortField === 'title' ? $sortDirection : null"
+                      class="w-full">Titel
+                </x-th>
+                <x-th>Optionen</x-th>
+            </x-tr>
         </x-thead>
         <x-tbody>
-        @foreach($posts as $post)
-            <x-tr wire:loading.class.delay="opacity-25" class="{{ $loop->even ? 'bg-gray-50' : '' }}">
-                <x-td>{{ $post->id }}</x-td>
-                <x-td class=" whitespace-nowrap">{{ $post->created_at }}</x-td>
-                <x-td>
-                    @if($post->isTrashed())
-                        <i class="far fa-dot-circle text-red-700"></i>
-                    @else
-                        <i class="far text-green-600 fa-dot-circle"></i>
-                    @endif
-                </x-td>
-                <x-td>{{ $post->title }}</x-td>
-                <x-td>
-                    <div class="flex">
-{{$post->id}}:
-                        <div>
-                            @livewire('edit-modal', ["post" => $post->toArray()], key($loop->index))
+            @foreach($posts as $post)
+                <x-tr wire:key="{{$loop->index}}" wire:loading.class.delay="opacity-25" class="{{ $loop->even ? 'bg-gray-50' : '' }}">
+                    <x-td>{{ $post->id }}</x-td>
+                    <x-td class=" whitespace-nowrap">{{ $post->created_at }}</x-td>
+                    <x-td>
+                        @if($post->isTrashed())
+                            <i class="far fa-dot-circle text-red-700"></i>
+                        @else
+                            <i class="far text-green-600 fa-dot-circle"></i>
+                        @endif
+                    </x-td>
+                    <x-td>{{ $post->title }}</x-td>
+                    <x-td>
+                        <div class="flex">
+{{--                            @livewire('edit-modal', ["post" => $post->toArray()], key($loop->index))--}}
+                            <a wire:click="editModal({{$post->id}})" class="btn btn-secondary"><i
+                                    class="fa fa-pencil-alt fa-fw"></i></a>
+                            <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-secondary">
+                                    @if($post->isTrashed())
+                                        <i class="fa fa-toggle-off text-red-700 fa-fw"></i>
+                                    @else
+                                        <i class="fa fa-toggle-on text-green-700 fa-fw"></i>
+                                    @endif
+                                </button>
+                            </form>
                         </div>
-                        <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
-                            @method('delete')
-                            @csrf
-                            <button type="submit" class="btn btn-secondary">
-                                @if($post->isTrashed())
-                                    <i class="fa fa-toggle-off text-red-700 fa-fw"></i>
-                                @else
-                                    <i class="fa fa-toggle-on text-green-700 fa-fw"></i>
-                                @endif
-                            </button>
-                        </form>
-                    </div>
-                </x-td>
-            </x-tr>
-        @endforeach
+                    </x-td>
+                </x-tr>
+            @endforeach
         </x-tbody>
     </x-table>
 
