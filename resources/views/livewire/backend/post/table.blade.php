@@ -36,9 +36,10 @@
                 <x-td>{{ $post->title }}</x-td>
                 <x-td>
                     <div class="flex">
-
-                        <a href="{{ route('admin.post.edit', $post->slug) }}" class="btn btn-secondary"><i
-                                class="fa fa-pencil-alt fa-fw"></i></a>
+{{$post->id}}:
+                        <div>
+                            @livewire('edit-modal', ["post" => $post->toArray()], key($loop->index))
+                        </div>
                         <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
                             @method('delete')
                             @csrf

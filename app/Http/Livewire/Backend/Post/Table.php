@@ -12,6 +12,9 @@ class Table extends Component
 
     public $sortField = 'created_at';
     public $sortDirection = 'desc';
+    public $updated = null;
+
+    protected $listeners = ["post-updated" => "postUpdated"];
 
     public function sortBy($field)
     {
@@ -22,6 +25,11 @@ class Table extends Component
         }
 
         $this->sortField = $field;
+    }
+
+    public function postUpdated()
+    {
+        $this->updated = now();
     }
 
     public function render()

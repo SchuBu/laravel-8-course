@@ -1,5 +1,5 @@
 <div x-data="{ show: @entangle($attributes->wire('model')) }">
-    <button @click="show = true">Test</button>
+    {{ $button }}
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div
         x-show="show"
@@ -65,7 +65,7 @@
                                       d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                             </svg>
                         </div>
-                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left flex-1">
                             @if(isset($title))
                                 <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
                                     {!! $title !!}
