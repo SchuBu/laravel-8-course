@@ -6,6 +6,8 @@ module.exports = {
         './resources/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
+        './vendor/usernotnull/tall-toasts/config/**/*.php',
+        './vendor/usernotnull/tall-toasts/resources/views/**/*.blade.php',
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {

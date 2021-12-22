@@ -20,6 +20,7 @@
     @livewireStyles
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
+<livewire:toasts />
 <div class="w-64 mt-3 ml-3 fixed">
     <div class="">
         <a href="https://www.buymeacoffee.com/schubu">
@@ -35,6 +36,7 @@
 <x-flash-messages/>
 {{ $slot }}
 <x-layouts.footer/>
+@toastScripts
 <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 <script src="//unpkg.com/alpinejs" defer></script>
 @livewireScripts
