@@ -39,8 +39,8 @@
                     <x-td>{{ $post->title }}</x-td>
                     <x-td>
                         <div class="flex">
-                            @livewire('backend.post.edit-modal', ["post" => $post->toArray()], key($post->id))
-                            <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
+                            <livewire:backend.post.edit-modal :post="$post->toArray()" :wire:key="'edit-'.$post->id" />
+                           {{-- <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-secondary">
@@ -50,7 +50,8 @@
                                         <i class="fa fa-toggle-on text-green-700 fa-fw"></i>
                                     @endif
                                 </button>
-                            </form>
+                            </form>--}}
+                            <livewire:backend.post.toggle :post="$post" :wire:key="'toggle-'.$post->id" />
                             <button type="submit" class="btn btn-secondary">
                                 <i class="fa fa-trash fa-fw"></i>
                             </button>
