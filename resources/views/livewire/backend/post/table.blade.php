@@ -52,9 +52,8 @@
                                 </button>
                             </form>--}}
                             <livewire:backend.post.toggle :post="$post" :wire:key="'toggle-'.$post->id" />
-                            <button type="submit" class="btn btn-secondary">
-                                <i class="fa fa-trash fa-fw"></i>
-                            </button>
+                            <livewire:backend.post.delete-modal :post="$post" :wire:key="'delete-'.$post->id" />
+
                         </div>
                     </x-td>
                 </x-tr>
