@@ -1,6 +1,6 @@
 <div class="flex-1">
     <div class="mb-5 flex justify-end">
-        <livewire:backend.post.create-modal />
+        <livewire:backend.post.create-modal/>
     </div>
 
 
@@ -26,7 +26,8 @@
         </x-thead>
         <x-tbody>
             @foreach($posts as $post)
-                <x-tr wire:key="{{$loop->index}}" wire:loading.class.delay="opacity-25" class="{{ $loop->even ? 'bg-gray-50' : '' }}">
+                <x-tr wire:key="{{$loop->index}}" wire:loading.class.delay="opacity-25"
+                      class="{{ $loop->even ? 'bg-gray-50' : '' }}">
                     <x-td>{{ $post->id }}</x-td>
                     <x-td class=" whitespace-nowrap">{{ $post->created_at }}</x-td>
                     <x-td>
@@ -39,20 +40,33 @@
                     <x-td>{{ $post->title }}</x-td>
                     <x-td>
                         <div class="flex">
-                            <livewire:backend.post.edit-modal :post="$post->toArray()" :wire:key="'edit-'.$post->id" />
-                           {{-- <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-secondary">
-                                    @if($post->isTrashed())
-                                        <i class="fa fa-toggle-off text-red-700 fa-fw"></i>
-                                    @else
-                                        <i class="fa fa-toggle-on text-green-700 fa-fw"></i>
-                                    @endif
+                            <livewire:backend.post.edit-modal :post="$post->toArray()" :wire:key="'edit-'.$post->id"/>
+                            {{-- <form action="{{ route('admin.post.destroy', $post->slug) }}" method="post">
+                                 @method('delete')
+                                 @csrf
+                                 <button type="submit" class="btn btn-secondary">
+                                     @if($post->isTrashed())
+                                         <i class="fa fa-toggle-off text-red-700 fa-fw"></i>
+                                     @else
+                                         <i class="fa fa-toggle-on text-green-700 fa-fw"></i>
+                                     @endif
+                                 </button>
+                             </form>--}}
+
+{{--                            @can('toggle posts')--}}
+                                <livewire:backend.post.toggle :post="$post" :wire:key="'toggle-'.$post->id"/>
+{{--                            @endcan--}}
+
+                            @can('delete', $post)
+                                <livewire:backend.post.delete-modal :post="$post" :wire:key="'delete-'.$post->id"/>
+                            @endcan
+
+                            @cannot('delete', $post)
+                                <button @click="show = true" type="submit" class="btn btn-secondary opacity-50 cursor-not-allowed" disabled>
+                                    <i class="fa fa-trash fa-fw"></i>
                                 </button>
-                            </form>--}}
-                            <livewire:backend.post.toggle :post="$post" :wire:key="'toggle-'.$post->id" />
-                            <livewire:backend.post.delete-modal :post="$post" :wire:key="'delete-'.$post->id" />
+                            @endcannot
+
 
                         </div>
                     </x-td>
