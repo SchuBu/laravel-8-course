@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [StartpageController::class, 'index'])->name('home');
 
 Route::get('mail', function () {
-    Mail::to('peter@schu-bu.de')->send(new \App\Mail\NewPost(Post::first()));
+    for ($i=0;$i<100;$i++) {
+        Mail::to('peter@schu-bu.de')->queue(new \App\Mail\NewPost(Post::first()));
+    }
 });
 
 Route::middleware(['auth'])->group(function () {

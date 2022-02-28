@@ -27,6 +27,6 @@ class SendNewPostEmailNotification
      */
     public function handle(NewPostCreated $event)
     {
-        Mail::to('peter@schu-bu.de')->send(new \App\Mail\NewPost($event->post));
+        Mail::to('peter@schu-bu.de')->queue(new \App\Mail\NewPost($event->post));
     }
 }
