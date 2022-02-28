@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->text('body');
             $table->integer('views')->default(0);
+            $table->boolean('is_premium')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -25,6 +25,7 @@ class PostFactory extends Factory
             'user_id' => $this->faker->numberBetween(1,100),
             'title' => $this->faker->sentence,
             'body' => $this->faker->text(),
+            'is_premium' => $this->faker->boolean,
             'created_at' => $this->faker->dateTimeBetween('2020-01-01','2021-12-31'),
             'deleted_at' => $this->faker->randomElement([
                 null,

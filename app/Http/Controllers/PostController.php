@@ -46,6 +46,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        if($post->is_premium) $this->authorize('show premium-posts');
         return view('blog.show', compact('post'));
     }
 
