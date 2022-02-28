@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\NewPostCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Mail;
 
 class SendNewPostEmailNotification
 {
@@ -26,7 +27,6 @@ class SendNewPostEmailNotification
      */
     public function handle(NewPostCreated $event)
     {
-        dump($event->post);
-        // send mail
+        Mail::to('peter@schu-bu.de')->send(new \App\Mail\NewPost($event->post));
     }
 }
