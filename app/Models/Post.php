@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\NewPostCreated;
 use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

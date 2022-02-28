@@ -41,6 +41,7 @@ class PostController extends Controller
             'title' => 'required',
             'body' => 'required'
         ]);
+
         Auth::user()->posts()->create($data);
         self::success('Der Beitrag wurde erfolgreich erstellt!');
         return redirect(route('admin.post.index'));
