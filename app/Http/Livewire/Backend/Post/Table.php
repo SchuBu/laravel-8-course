@@ -9,12 +9,16 @@ use Livewire\WithPagination;
 class Table extends Component
 {
     use WithPagination;
-
     public $sortField = 'created_at';
     public $sortDirection = 'desc';
     public $updated = null;
-
     protected $listeners = ["post-updated" => "postUpdated"];
+    public $filter = ['search' => null];
+
+    public function updatedFilter()
+    {
+        $this->resetPage();
+    }
 
     public function sortBy($field)
     {
@@ -34,7 +38,11 @@ class Table extends Component
 
     public function render()
     {
-        $posts = Post::withTrashed()
+        $posts = Post::query()
+            ->when($this->filter['search'], function ($query) {
+                $query->search('title', $this->filter['search']);
+            })
+            ->withTrashed()
             ->orderBy($this->sortField, $this->sortDirection)
             ->paginate(15);
 

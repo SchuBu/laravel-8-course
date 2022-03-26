@@ -1,5 +1,12 @@
 <div class="flex-1">
     <div class="mb-5 flex justify-end">
+
+        <div class="shadow-md flex">
+            <form action="" method="post" class="flex">
+                <input type="text" class="p-2" name="search" wire:keydown.escape="$set('filter.search','')" wire:model="filter.search" placeholder="Filter ..."/>
+            </form>
+        </div>
+
         <livewire:backend.post.create-modal/>
     </div>
 
