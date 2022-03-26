@@ -1,5 +1,5 @@
 <div class="flex-1">
-    <div class="mb-5 flex justify-end">
+    <div class="mb-5 flex justify-between items-center">
 
         <div class="shadow-md flex">
             <form action="" method="post" class="flex">
@@ -24,10 +24,11 @@
                 <x-th sortable wire:click="sortBy('created_at')"
                       :direction="$sortField === 'created_at' ? $sortDirection : null">Datum
                 </x-th>
-                <x-th></x-th>
+                {{--<x-th></x-th>--}}
                 <x-th sortable wire:click="sortBy('title')" :direction="$sortField === 'title' ? $sortDirection : null"
                       class="w-full">Titel
                 </x-th>
+                <x-th>Autor</x-th>
                 <x-th>Optionen</x-th>
             </x-tr>
         </x-thead>
@@ -37,14 +38,15 @@
                       class="{{ $loop->even ? 'bg-gray-50' : '' }}">
                     <x-td>{{ $post->id }}</x-td>
                     <x-td class=" whitespace-nowrap">{{ $post->created_at }}</x-td>
-                    <x-td>
+            {{--        <x-td>
                         @if($post->isTrashed())
                             <i class="far fa-dot-circle text-red-700"></i>
                         @else
                             <i class="far text-green-600 fa-dot-circle"></i>
                         @endif
-                    </x-td>
+                    </x-td>--}}
                     <x-td>{{ $post->title }}</x-td>
+                    <x-td>{{ $post->user->email }}</x-td>
                     <x-td>
                         <div class="flex">
                             <livewire:backend.post.edit-modal :post="$post->toArray()" :wire:key="'edit-'.$post->id"/>

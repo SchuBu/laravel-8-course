@@ -38,9 +38,13 @@ class Table extends Component
 
     public function render()
     {
-        $posts = Post::query()
+        $posts = Post::query()->with('user')
             ->when($this->filter['search'], function ($query) {
-                $query->search('title', $this->filter['search']);
+                $query->search('title', $this->filter['search'])
+                ->orSearch('id', $this->filter['search']);
+            })
+            ->orWhereHas('user', function ($query) {
+                $query->search('email', $this->filter['search']);
             })
             ->withTrashed()
             ->orderBy($this->sortField, $this->sortDirection)
